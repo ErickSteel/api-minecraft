@@ -10,4 +10,4 @@ class ComandosServer(graphene.Mutation):
 
 	def mutate(self, info, cmd):
 		os.system('screen -S minecraft -X stuff "{}\015"'.format(cmd))
-		return ComandosServer(estado=False, minecraft_dir='home/erick/Escritorio/Server/', cmd=cmd)
+		return ComandosServer(estado=True, minecraft_dir='home/erick/Escritorio/Server/', cmd=cmd)

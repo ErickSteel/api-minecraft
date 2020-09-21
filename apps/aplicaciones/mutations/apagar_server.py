@@ -7,5 +7,4 @@ class ApagarServer(graphene.Mutation):
 
 	def mutate(self, info):
 		os.system('screen -S minecraft -X stuff "{}\015"'.format('stop'))
-		print("Server Apagado")
 		return ApagarServer(estado=False, minecraft_dir='home/erick/Escritorio/Server/')

@@ -2,9 +2,11 @@ import graphene
 import os
 
 class EstadoServidor(graphene.ObjectType):
-    process = graphene.String()
+	estado = graphene.String()
 
-    def resolve_process(self, info):
-        result = str(os.popen("ps -ef | grep server.jar | grep -v grep | awk '{printf $2}'").read())
-        result = result.replace('\n', ' ')
-        return result
+	def resolve_estado(self, info):
+		output = os.popen('screen -ls').read()
+		if '.minecraft'  in output:
+			return 'Encendido'
+		else:
+			return 'Apagado'
